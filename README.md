@@ -15,6 +15,8 @@ This project demonstrates practical Linux administration, security auditing, and
 ## Usage
 
 ```bash
+git clone [https://github.com/gianniskoutellas/bash-security-toolkit.git](https://github.com/gianniskoutellas/bash-security-toolkit.git)
+cd bash-security-toolkit
 chmod +x scripts/*.sh
 ./scripts/system_inventory.sh
 ```
