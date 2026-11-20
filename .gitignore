@@ -1,0 +1,20 @@
+# Generated reports
+output/
+*.txt
+*.log
+
+# Editor/system files
+.DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Virtual machine files
+*.vbox
+*.vdi
+*.vmdk
+*.ova
