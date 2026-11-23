@@ -1,33 +1,47 @@
 # Bash Security Toolkit
 
-A collection of Bash scripts for basic Linux security auditing and hardening checks in isolated, authorised lab environments.
+Bash scripts for basic Linux security auditing in isolated, authorised lab environments.
 
 ## Purpose
 
-This project demonstrates practical Linux administration, security auditing, and reporting skills.
+Demonstrates practical Linux administration, log review, and security-relevant inventory skills.
 
 ## Scripts
 
-- `system_inventory.sh`: Collects OS, kernel, hostname, disk, memory, and network information.
-- `failed_logins.sh`: Identifies failed authentication attempts from system logs.
-- `listening_ports.sh`: Lists active listening services and associated processes.
+| Script | What it does |
+|--------|----------------|
+| `scripts/system_inventory.sh` | OS, kernel, CPU, memory, disk, network interfaces, listening ports summary, recent logins |
+| `scripts/failed_logins.sh` | Failed authentication attempts from auth.log/secure + top source IPs + lastb |
+| `scripts/listening_ports.sh` | Active listening sockets (ss/netstat) and processes bound to network ports |
 
 ## Usage
 
 ```bash
-git clone [https://github.com/gianniskoutellas/bash-security-toolkit.git](https://github.com/gianniskoutellas/bash-security-toolkit.git)
+git clone https://github.com/gianniskoutellas/bash-security-toolkit.git
 cd bash-security-toolkit
 chmod +x scripts/*.sh
-./scripts/system_inventory.sh
+
+# Run from the scripts directory so relative output path works
+cd scripts
+./system_inventory.sh
+./failed_logins.sh
+./listening_ports.sh
 ```
+
+Reports are written to `output/` (one timestamped file per run).
+
+## Requirements
+
+- Linux (tested patterns for Debian/Ubuntu and RHEL-style systems)
+- Standard tools: `ss` or `netstat`, `grep`, `awk`-compatible environment
+- Some checks (auth logs, lastb, full process info) may need elevated privileges
 
 ## Scope
 
-For authorised lab environments only. This project does not perform exploitation or unauthorised testing.
+For authorised lab environments only. No exploitation, no unauthorised scanning.
 
 ## Roadmap
 
-- Add user and sudo audit script
-- Add basic SSH hardening checks
-- Add CSV/JSON reporting
-- Add severity ratings
+- User and sudoers audit script
+- Basic SSH configuration checks
+- Optional CSV/JSON report format
